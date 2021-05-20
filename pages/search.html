@@ -18,9 +18,11 @@
           <img class="imgPosterDetail" src="" alt="poster"/>
           <p class="descriptionSearch"></p>
           <a class="comicSearch" href="#">go page comics</a>
+          <button id="addCharacterSearch">add to favorite</button>
         </div>
       </div>
     </div>
+    <footer>by matias flores</footer>
   </body>
   <script>
     const titulo = document.getElementById('titulo')
@@ -32,6 +34,7 @@
     const imgPosterDetail = document.querySelector(".imgPosterDetail")
     const descriptionSearch = document.querySelector(".descriptionSearch")
     const comicSearch = document.querySelector(".comicSearch")
+    const botonSearch = document.getElementById('addCharacterSearch');
 
     const backSearch = document.getElementById('back')
     backSearch.href="../pages/home.html"
@@ -83,6 +86,35 @@
             alert(`sorry don't found nothing`)
           }
         }
+
+        const addToFavorite = () =>{
+          if(!localStorage.getItem("characters")){
+            let favorites = results
+            localStorage.setItem("characters", JSON.stringify(favorites))
+          }else{
+            let favorites = results
+            let save
+            let store = JSON.parse(localStorage.getItem("characters"))
+            let aux
+
+            for (var i = 0; i < store.length; i++) {
+              aux = store[i].id
+            }
+
+            if(aux === favorites[0].id){
+              alert("sorry this character is already in your list favourite please choice other")
+            }else{
+              save = store
+              save.push(favorites[0])
+              console.log(save)
+              localStorage.setItem("characters", JSON.stringify(save))
+              let num = JSON.parse(localStorage.getItem("characters"))
+              alert(`Great you have a ${num.length} in your favourite list`)
+            }
+          }
+        }
+
+        botonSearch.onclick=function(){addToFavorite()}
       })
     }
 

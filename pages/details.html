@@ -22,6 +22,7 @@
         <div>
       </div>
     </div>
+    <footer>by matias flores</footer>
   </body>
     <script>
 
@@ -43,7 +44,7 @@
 
     var publicKey = "fa83e08a8c55c85258fee4bd9e594533";
     var privateKey = "3c11f59563c3a07c9ebe34093a40ac5d5060734e";
-    var baseUrl = `http://gateway.marvel.com/v1/public/characters/${c}`;
+    var baseUrl = `https://gateway.marvel.com/v1/public/characters/${c}`;
     var ts = new Date().getTime();
     var stringToHash = ts + privateKey + publicKey;
     var hash = MD5(stringToHash);
@@ -65,26 +66,38 @@
               comics = point.url;
             }
         })
-        console.log(comics)
         comicsCard.href=`${comics}`
 
-        boton.onclick= function addToFavorite(){
+        const addToFavorite = () =>{
           if(!localStorage.getItem("characters")){
             let favorites = results
             localStorage.setItem("characters", JSON.stringify(favorites))
           }else{
-            let getStore = JSON.parse(localStorage.getItem("characters"))
-              for (var i = 0; i < getStore.length; i++) {
-                console.log(getStore[i].id)
-                console.log("RESULTS",results[0].id)
-                  if(results[0].id !== getStore[i].id){
-                      return getStore = getStore.push(results[0])
-                  }else{
-                    alert("ya existe")
-                  }
-                }
-              }
+            let favorites = results
+            let save
+            let store = JSON.parse(localStorage.getItem("characters"))
+            let aux
+
+            for (var i = 0; i < store.length; i++) {
+              aux = store[i].id
             }
+
+            if(aux === favorites[0].id){
+              alert("sorry this character is already in your list favourite please choice other")
+            }else{
+              save = store
+              save.push(favorites[0])
+              console.log(save)
+              localStorage.setItem("characters", JSON.stringify(save))
+              let num = JSON.parse(localStorage.getItem("characters"))
+              alert(`Great you have a ${num.length} in your favourite list`)
+            }
+          }
+        }
+
+        boton.onclick=function(){addToFavorite()}
+
+
       }).catch(err => {
         console.log(err);
       })

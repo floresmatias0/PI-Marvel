@@ -70,7 +70,7 @@
 .descriptionSearch:hover{
   transform: scale(1.05);
 }
-.comicSearch{
+.comicSearch, #addCharacterSearch{
   text-decoration: none;
   background: transparent;
   color: black;
@@ -85,7 +85,16 @@
   box-shadow: 0px 0px 5px black inset;
   border-radius: 0.3em;
   margin-bottom: 1em;
+  cursor: pointer;
 }
-.comicSearch:hover{
+.comicSearch:hover, #addCharacterSearch:hover{
   background-color: rgba(255, 0, 0, 0.4);
+}
+footer{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  font-family: "Casual-Ncv";
+  text-shadow: 0px 0px 2px white;
+  margin-left: 0.1em;
 }

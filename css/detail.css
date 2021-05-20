@@ -92,3 +92,11 @@
 #comicsCard{
   text-decoration: none;
 }
+footer{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  font-family: "Casual-Ncv";
+  text-shadow: 0px 0px 2px white;
+  margin-left: 0.1em;
+}

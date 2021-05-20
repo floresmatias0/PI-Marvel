@@ -1,0 +1,106 @@
+@font-face {
+  font-family: "Avenger";
+  src: url("../assets/fonts/AvengeroRegular.ttf");
+}
+@font-face {
+  font-family: "Casual-Ncv";
+  src: url("../assets/fonts/FtySpeedyCasualNcv.ttf");
+}
+.bg-favourites{
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: auto;
+  background-image: url("../assets/images/bg-green.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+#titulo{
+  font-family: "Avenger";
+  text-align: center;
+  text-shadow: 0px 0px 6px white;
+}
+.mainFav{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+#listFavourites{
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+}
+.listFav{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.cardCharacterFav{
+  width: 15em;
+  margin: 1em;
+  background: rgb(26,236,36);
+  background: linear-gradient(0deg, rgba(26,236,36,0.5718662464985995) 32%, rgba(94,135,106,0.7483368347338936) 64%);
+  border-radius: 50%;
+}
+.cardCharacterFav h2{
+  text-align: center;
+  font-family: "Casual-Ncv";
+  text-shadow: 0px 0px 2px white;
+}
+.cardCharacterFav:hover{
+  transform: scale(1.1);
+}
+.imgPosterFav{
+  width: 100%;
+  border-radius: 50%;
+  max-height: 14em;
+  min-height: 14em;
+  box-shadow: 2px 2px 5px black;
+}
+#imageBackFav{
+  width: 3em;
+  margin-right: 0.5em;
+}
+#backFav{
+  display: flex;
+  align-items: center;
+  font-family: "Avenger";
+  text-decoration: none;
+  color: black;
+  text-shadow: 0px 0px 2px white;
+}
+.buttonRemove{
+  margin-left: 50%;
+  transform: translateX(-50%);
+  background: transparent;
+  color: black;
+  padding: 0;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  font-family: "Casual-Ncv";
+  font-size: 1.1rem;
+  text-shadow: 0px 0px 2px white;
+  box-shadow: 0px 0px 3px white inset;
+  border-radius: 0.6em;
+  margin-bottom: 1em;
+  cursor: pointer;
+}
+.textStore{
+  font-family: "Avenger";
+  text-align: center;
+}
+footer{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  font-family: "Casual-Ncv";
+  text-shadow: 0px 0px 2px white;
+  margin-left: 0.1em;
+}

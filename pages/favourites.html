@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../css/favourites.css">
+    <title>Marvel API</title>
+  </head>
+  <body class="bg-favourites">
+    <header>
+      <a id="backFav" href="./home.html">
+        <img id="imageBackFav" src="../assets/images/left-arrow.png" alt="back"/>
+        back
+      </a>
+    <h1 id="titulo">Favourites</h1>
+    </header>
+    <main class="mainFav">
+      <div id="listFavourites">
+      </div>
+      <p class="textStore"></p>
+    </main>
+    <footer>by matias flores</footer>
+  </body>
+  <script>
+  const textStore = document.querySelector(".textStore")
+  const cards = document.querySelector(".cards");
+  var favouritesHtml=""
+
+  const showFavourites = () => {
+    let store = JSON.parse(localStorage.getItem("characters"));
+    var aux
+    var aux2
+
+    removeFav = (value) => {
+      var save
+      for (var i = 0; i < store.length; i++) {
+          if(store[i].id === value){
+            aux = store[i].id
+          }
+      }
+      if(aux === value){
+
+        let newStore = store.filter(point => point.id !== value)
+        save = newStore
+        localStorage.setItem("characters", JSON.stringify(save))
+        alert("erase character")
+        location.reload()
+      }else{
+        alert("error 404")
+      }
+    }
+
+    favouritesHtml =`<div class='listFav'>`;
+
+      store.forEach(element => {
+        aux2 = element.id
+          favouritesHtml+=`<div class="cardCharacterFav">
+            <h2>${element.name}</h2>
+            <button onclick=removeFav(${element.id}) class="buttonRemove">Remove favourite</button>
+            <a href="./details.html?c=${element.id}" target="_self">
+              <img class="imgPosterFav" src=${element.thumbnail.path}.${element.thumbnail.extension} alt="poster"/>
+            </a>
+          </div>`;
+        });
+
+        favouritesHtml+="</div>"
+
+        document.getElementById("listFavourites").innerHTML="";
+        document.getElementById("listFavourites").innerHTML=favouritesHtml;
+      }
+    let store = JSON.parse(localStorage.getItem("characters"));
+    if(store.length > 0){
+      showFavourites()
+    }else{
+      textStore.innerHTML="sorry your list favourite is empty"
+    }
+
+  </script>
+</html>

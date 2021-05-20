@@ -48,7 +48,7 @@
   box-shadow: 1px 1px 10px blue inset;
   border-radius: 0.6em;
   border: 1px solid blue inset;
-  background: transparent;
+  background: rgb(255,255,255, 0.3);
   text-shadow: 0px 0px 2px white;
   font-family: "Casual-Ncv";
   font-size: 1.1rem;
@@ -77,6 +77,24 @@
   text-shadow: 0px 0px 2px white;
   box-shadow: 1px 1px 3px white;
   cursor: pointer;
+}
+#pageFavourite{
+  display: flex;
+  align-self: center;
+  font-family: "Avenger";
+  margin-left: 0.5em;
+  text-decoration: none;
+  text-shadow: 0px 0px 3px white;
+  color: black;
+}
+#pageFavourite:hover{
+  position: relative;
+  bottom: 0.2em;
+}
+.leftNav{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
 }
 #titulo{
   font-family: "Avenger";
@@ -136,7 +154,17 @@
 #prevButton, #nextButton{
   margin: 1em;
 }
-
+#buttonSearch button:hover,#prevButton:hover, #nextButton:hover{
+  background-color: rgba(0, 60, 29, 0.2);
+}
+footer{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  font-family: "Casual-Ncv";
+  text-shadow: 0px 0px 2px white;
+  margin-left: 0.1em;
+}
 @media screen and (max-width:750px){
   .navBar{
     flex-direction: column;
