@@ -1,0 +1,94 @@
+@font-face {
+  font-family: "Avenger";
+  src: url("../assets/fonts/AvengeroRegular.ttf");
+}
+@font-face {
+  font-family: "Casual-Ncv";
+  src: url("../assets/fonts/FtySpeedyCasualNcv.ttf");
+}
+.contentDetail{
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: auto;
+  background-image: url("../assets/images/vecteezy_comic.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+.backDetail{
+  font-family: "Avenger";
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: black;
+}
+#imgDetail{
+  width: 3em;
+  margin-right: 0.5em;
+}
+#titulo{
+  font-family: "Avenger";
+  text-align: center;
+  text-shadow: 0px 0px 2px white;
+}
+#addCharacter,#comicsCard{
+  margin-left: auto;
+  margin-right: auto;
+  background: transparent;
+  color: black;
+  padding: 0;
+  padding-left: 1.2em;
+  padding-right: 1.2em;
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
+  font-family: "Casual-Ncv";
+  font-size: 1.3rem;
+  text-shadow: 0px 0px 2px white;
+  box-shadow: 0px 0px 3px white inset;
+  border-radius: 0.3em;
+  margin-bottom: 1em;
+  cursor: pointer;
+}
+#addCharacter:hover,#comicsCard:hover{
+  background-color: rgba(255, 0, 0, 0.4);
+}
+.detail{
+  width: 100%;
+  height: 100%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.detailCharacter{
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1em;
+  border-radius: 1em;
+  background: rgb(26,69,236);
+  background: linear-gradient(0deg, rgba(26,69,236,0.7175245098039216) 32%, rgba(127,223,236,1) 64%);
+  box-shadow: 0px 0px 20px black inset;
+}
+#descriptionCard{
+  font-family: "Casual-Ncv";
+  text-align: center;
+  font-size: 1.2rem;
+  text-shadow: 0px 0px 2px white;
+  margin: 1.4em;
+}
+#descriptionCard:hover{
+  transform: scale(1.05);
+}
+#imageCard{
+  width: 98%;
+  margin-top: 0.5em;
+  border-radius: 1em;
+}
+#comicsCard{
+  text-decoration: none;
+}

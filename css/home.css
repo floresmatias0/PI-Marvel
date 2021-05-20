@@ -1,0 +1,167 @@
+@font-face {
+  font-family: "Avenger";
+  src: url("../assets/fonts/AvengeroRegular.ttf");
+}
+@font-face {
+  font-family: "Casual-Ncv";
+  src: url("../assets/fonts/FtySpeedyCasualNcv.ttf");
+}
+.bg-home{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow:auto;
+  background-image: url("../assets/images/comic-zoom.webp");
+  background-size: cover;
+  background-attachment:fixed;
+}
+.headerHome{
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+}
+.navBar{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 4em;
+}
+.leftNav{
+  width: 30%
+}
+.rigthNav{
+  width: 70%
+}
+#logoHome{
+  width: 8em;
+}
+#searchBar{
+  width: 50%;
+  height: 2.5em;
+  outline: none;
+  box-shadow: 1px 1px 10px blue inset;
+  border-radius: 0.6em;
+  border: 1px solid blue inset;
+  background: transparent;
+  text-shadow: 0px 0px 2px white;
+  font-family: "Casual-Ncv";
+  font-size: 1.1rem;
+  filter: blur(0.9);
+  float: right;
+  margin-right: 1em;
+}
+#searchBar::placeholder{
+  text-align: center;
+  text-shadow: 0px 0px 2px white;
+  color: black
+}
+#buttonSearch button{
+  float: right;
+}
+#buttonSearch button,#prevButton, #nextButton{
+  background: transparent;
+  border: none;
+  padding: 0;
+  padding-left: 1em;
+  padding-right: 1em;
+  height: 2.5em;
+  font-family: "Casual-Ncv";
+  font-size: 1.15rem;
+  border-radius: 0.5em;
+  text-shadow: 0px 0px 2px white;
+  box-shadow: 1px 1px 3px white;
+  cursor: pointer;
+}
+#titulo{
+  font-family: "Avenger";
+  text-shadow: 0px 0px 4px white;
+  text-align: center;
+}
+.containerCharacters{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+#characters{
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+}
+.list{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.cardCharacter{
+  width: 15em;
+  margin: 1em;
+  background: rgb(3,137,206);
+  background: linear-gradient(0deg, rgba(3,137,206,1) 76%, rgba(0,212,255,0) 100%);
+  border-radius: 50%;
+}
+.cardCharacter h2{
+  text-align: center;
+  font-family: "Casual-Ncv";
+  text-shadow: 0px 0px 2px white;
+}
+.cardCharacter a{
+  text-decoration: none;
+}
+.cardCharacter img{
+  width: 100%;
+  border-radius: 50%;
+  max-height: 14em;
+  min-height: 14em;
+  box-shadow: 2px 2px 5px black;
+}
+.cardCharacter img:hover{
+  transform: scale(1.1);
+}
+.contentButtons{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+#prevButton, #nextButton{
+  margin: 1em;
+}
+
+@media screen and (max-width:750px){
+  .navBar{
+    flex-direction: column;
+    height: auto;
+  }
+  .leftNav{
+    width: 100%
+  }
+  #logoHome{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+  .rigthNav{
+    width: 100%
+    float:none;
+  }
+  #searchBar{
+    width: 70%;
+  }
+  #buttonSearch button{
+    padding: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

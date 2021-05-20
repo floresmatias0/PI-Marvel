@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../css/home.css">
+    <title>Marvel API</title>
+  </head>
+  <body class="bg-home">
+    <header class="headerHome">
+      <nav class="navBar">
+          <div class="leftNav">
+            <a id="logoRef" href="#">
+              <img id="logoHome" alt="">
+            </a>
+          </div>
+          <div class="rigthNav">
+            <a id="buttonSearch" href="#"><button>search</button></a>
+            <input
+              type="text"
+              name="searchBar"
+              id="searchBar"
+              placeholder="search your character"
+            />
+          </div>
+      </nav>
+    </header>
+    <main>
+      <h1 id="titulo">Marvel characters</h1>
+      <div class="containerCharacters">
+        <div class="contentButtons">
+          <button id="prevButton">Prev</button>
+          <button id="nextButton">Next</button>
+        </div>
+        <div id="characters"></div>
+      </div>
+    </main>
+    <footer></footer>
+  </body>
+  <script src="../js/home.js"></script>
+</html>
