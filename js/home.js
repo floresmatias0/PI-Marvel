@@ -17,8 +17,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
     var stringToHash = ts + privateKey + publicKey;
     var hash = MD5(stringToHash);
     var limit = 100;
-    var url = baseUrl + '?limit=' + limit + '&ts=' + ts + '&apikey=' + publicKey + '&hash=' + hash;
+    var offset = 0;
+    var url = baseUrl + '?offset=' + offset + '&ts=' + ts + '&apikey=' + publicKey + '&hash=' + hash;
 
+    console.log(url)
     var results
     var pageNumber= 1;
     var pageSize= 20;
@@ -28,6 +30,31 @@ document.addEventListener("DOMContentLoaded", function(event) {
     const paginate = (array, page_size, page_number) =>{
         return array.slice((page_number - 1) * page_size, page_number * page_size);
     }
+
+    const nextPage = () =>{
+      // pageNumber ++;
+      // console.log(pageNumber)
+      newOffset = offset + 20;
+      console.log(offset);
+      url = baseUrl + '?offset=' + newOffset + '&ts=' + ts + '&apikey=' + publicKey + '&hash=' + hash; 
+      console.log(url);
+      api();
+      offset = newOffset;
+  }
+
+  const previusPage = () =>{
+      // pageNumber --;
+      if(offset === 0){
+        alert("sorry no previous page")
+      }else{
+        newOffset = offset - 20;
+        console.log(offset);
+        url = baseUrl + '?offset=' + newOffset + '&ts=' + ts + '&apikey=' + publicKey + '&hash=' + hash; 
+        console.log(url);
+        api();
+        offset = newOffset;
+      }
+  }
 
     const api = async() => {
       await fetch(url)
@@ -67,24 +94,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     api()
 
-    const nextPage = () =>{
-        pageNumber ++;
-        console.log(pageNumber)
-        showNoticias(results);
-    }
-
-    const previusPage = (page,aux) =>{
-        pageNumber --;
-        showNoticias(results);
-    }
-
     const prevButton = document.getElementById("prevButton")
     prevButton.onclick=function(){
-        pageNumber > 1  ? previusPage() : alert("no more pages")
+        // pageNumber > 1  ? previusPage() : alert("no more pages")
+        previusPage();
     }
     const nextButton = document.getElementById("nextButton")
     nextButton.onclick=function(){
-        pageNumber < pageCont ? nextPage() : alert("no more pages")
+        // pageNumber < pageCont ? nextPage() : alert("no more pages")
+        nextPage();
     }
 
     const searchBar = document.getElementById('searchBar')
