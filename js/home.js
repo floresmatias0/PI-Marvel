@@ -16,14 +16,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
     var ts = new Date().getTime();
     var stringToHash = ts + privateKey + publicKey;
     var hash = MD5(stringToHash);
-    var limit = 100;
+    var limit = 30;
     var offset = 0;
-    var url = baseUrl + '?offset=' + offset + '&ts=' + ts + '&apikey=' + publicKey + '&hash=' + hash;
+    var url = baseUrl + '?offset=' + offset + '&limit=' + limit + '&ts=' + ts + '&apikey=' + publicKey + '&hash=' + hash;
 
     console.log(url)
     var results
     var pageNumber= 1;
-    var pageSize= 20;
+    var pageSize= 30;
     var charactersHtml = "";
     var pageCont
 
@@ -34,12 +34,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
     const nextPage = () =>{
       // pageNumber ++;
       // console.log(pageNumber)
-      newOffset = offset + 20;
-      console.log(offset);
-      url = baseUrl + '?offset=' + newOffset + '&ts=' + ts + '&apikey=' + publicKey + '&hash=' + hash; 
-      console.log(url);
-      api();
-      offset = newOffset;
+      if(offset > 1483){
+        alert("sorry no more characters")
+      }else{
+        newOffset = offset + 20;
+        url = baseUrl + '?offset=' + newOffset + '&limit=' + limit + '&ts=' + ts + '&apikey=' + publicKey + '&hash=' + hash; 
+        api();
+        offset = newOffset;
+      }
   }
 
   const previusPage = () =>{
@@ -48,9 +50,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         alert("sorry no previous page")
       }else{
         newOffset = offset - 20;
-        console.log(offset);
-        url = baseUrl + '?offset=' + newOffset + '&ts=' + ts + '&apikey=' + publicKey + '&hash=' + hash; 
-        console.log(url);
+        url = baseUrl + '?offset=' + newOffset + '&limit=' + limit + '&ts=' + ts + '&apikey=' + publicKey + '&hash=' + hash; 
         api();
         offset = newOffset;
       }
