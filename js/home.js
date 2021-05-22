@@ -19,13 +19,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
     var limit = 30;
     var offset = 0;
     var url = baseUrl + '?offset=' + offset + '&limit=' + limit + '&ts=' + ts + '&apikey=' + publicKey + '&hash=' + hash;
-
-    console.log(url)
+    const firstPageHidden = document.getElementById("firstPageHidden")
+    
     var results
     var pageNumber= 1;
     var pageSize= 30;
     var charactersHtml = "";
-    var pageCont
+    // var pageCont;
+    var hidden = false;
 
     const paginate = (array, page_size, page_number) =>{
         return array.slice((page_number - 1) * page_size, page_number * page_size);
@@ -34,25 +35,69 @@ document.addEventListener("DOMContentLoaded", function(event) {
     const nextPage = () =>{
       // pageNumber ++;
       // console.log(pageNumber)
-      if(offset > 1483){
+      if(offset > 1462){
         alert("sorry no more characters")
       }else{
-        newOffset = offset + 20;
-        url = baseUrl + '?offset=' + newOffset + '&limit=' + limit + '&ts=' + ts + '&apikey=' + publicKey + '&hash=' + hash; 
+        newOffset = offset + 30;
+        url = baseUrl + '?offset=' + newOffset + '&limit=' + limit + '&ts=' + ts + '&apikey=' + publicKey + '&hash=' + hash;
+        hidden = true; 
         api();
         offset = newOffset;
       }
   }
 
+  const page10 = () => {
+      newOffset = 300;
+      console.log(newOffset)
+      url = baseUrl + '?offset=' + newOffset + '&limit=' + limit + '&ts=' + ts + '&apikey=' + publicKey + '&hash=' + hash;
+      hidden = true; 
+      api();
+      offset = newOffset
+  }
+
+  const page20 = () => {
+    newOffset = 600;
+    console.log(newOffset)
+    url = baseUrl + '?offset=' + newOffset + '&limit=' + limit + '&ts=' + ts + '&apikey=' + publicKey + '&hash=' + hash;
+    hidden = true; 
+    api();
+    offset = newOffset
+  }
+
+  const page30 = () => {
+    newOffset = 900;
+    console.log(newOffset)
+    url = baseUrl + '?offset=' + newOffset + '&limit=' + limit + '&ts=' + ts + '&apikey=' + publicKey + '&hash=' + hash; 
+    hidden = true;
+    api();
+    offset = newOffset
+  }
+
+  const lastPage = () => {
+    newOffset = 1463;
+    console.log(newOffset)
+    url = baseUrl + '?offset=' + newOffset + '&limit=' + limit + '&ts=' + ts + '&apikey=' + publicKey + '&hash=' + hash; 
+    hidden = true;
+    api();
+    offset = newOffset
+  }
+
+  const first = () =>{
+    newOffset = 0;
+    url = baseUrl + '?offset=' + newOffset + '&limit=' + limit + '&ts=' + ts + '&apikey=' + publicKey + '&hash=' + hash; 
+    api();
+    offset = newOffset;
+  }
   const previusPage = () =>{
       // pageNumber --;
       if(offset === 0){
         alert("sorry no previous page")
       }else{
-        newOffset = offset - 20;
+        newOffset = offset - 30;
         url = baseUrl + '?offset=' + newOffset + '&limit=' + limit + '&ts=' + ts + '&apikey=' + publicKey + '&hash=' + hash; 
         api();
         offset = newOffset;
+        console.log(offset)
       }
   }
 
@@ -60,14 +105,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
       await fetch(url)
       .then(response => response.json())
       .then(api => {
-        console.log(api)
         results = api.data.results
           let pagination
-          pageCont= Math.ceil(results.length/pageSize);
+          // pageCont= Math.ceil(results.length/pageSize);
 
           showNoticias = (_noticias) =>{
               pagination = paginate(results,pageSize,pageNumber);
-              console.log("next",pagination)
 
               charactersHtml =`<div class='list'>`;
 
@@ -86,6 +129,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
               document.getElementById("characters").innerHTML=charactersHtml;
           }
           showNoticias(results);
+          if(hidden === true){
+            firstPageHidden.id = "firstPage"
+            const firstPage = document.getElementById("firstPage")
+            firstPage.onclick=function(){
+              first();
+            }
+          }
 
       }).catch(err => {
         console.log(err)
@@ -103,6 +153,30 @@ document.addEventListener("DOMContentLoaded", function(event) {
     nextButton.onclick=function(){
         // pageNumber < pageCont ? nextPage() : alert("no more pages")
         nextPage();
+    }
+
+    const nextPage10 = document.getElementById("page10")
+    nextPage10.onclick=function(){
+        // pageNumber < pageCont ? nextPage() : alert("no more pages")
+        page10();
+    }
+
+    const nextPage20 = document.getElementById("page20")
+    nextPage20.onclick=function(){
+        // pageNumber < pageCont ? nextPage() : alert("no more pages")
+        page20();
+    }
+
+    const nextPage30 = document.getElementById("page30")
+    nextPage30.onclick=function(){
+        // pageNumber < pageCont ? nextPage() : alert("no more pages")
+        page30();
+    }
+
+    const last = document.getElementById("lastPage")
+    last.onclick=function(){
+        // pageNumber < pageCont ? nextPage() : alert("no more pages")
+        lastPage();
     }
 
     const searchBar = document.getElementById('searchBar')

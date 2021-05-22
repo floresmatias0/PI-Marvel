@@ -64,7 +64,7 @@
 #buttonSearch button{
   float: right;
 }
-#buttonSearch button,#prevButton, #nextButton{
+#buttonSearch button,#prevButton, #nextButton,#page10,#page20,#page30,#lastPage,#firstPage{
   background: transparent;
   border: none;
   padding: 0;
@@ -77,6 +77,15 @@
   text-shadow: 0px 0px 2px white;
   box-shadow: 1px 1px 3px white;
   cursor: pointer;
+}
+#page10,#page20,#page30{
+  margin:1em;
+}
+#firstPage{
+  display: block;
+}
+#firstPageHidden{
+  display: none;
 }
 #pageFavourite{
   display: flex;
@@ -181,7 +190,7 @@ footer{
     margin-bottom: 1em;
   }
   .rigthNav{
-    width: 100%
+    width: 100%;
     float:none;
   }
   #searchBar{
