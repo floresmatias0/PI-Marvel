@@ -24,6 +24,8 @@
     </div>
     <footer>by matias flores</footer>
   </body>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="sweetalert2.all.min.js"></script>
   <script>
     const titulo = document.getElementById('titulo')
     var url_string = window.location.href
@@ -81,9 +83,21 @@
 
         }else{
           if(c === "spiderman" || c === "spider man"){
-            alert("sorry try again with spider-man")
+            Swal.fire({
+              title: "sorry try again with spider-man",
+              showConfirmButton: false
+            })
+            setTimeout(()=>{
+              location.assign("/pages/home.html")
+            },2000)
           }else{
-            alert(`sorry don't found nothing`)
+            Swal.fire({
+              title: "sorry don't found nothing",
+              showConfirmButton: false
+            })
+            setTimeout(()=>{
+              location.assign("/pages/home.html")
+            },2000)
           }
         }
 
@@ -102,14 +116,24 @@
             }
 
             if(aux === favorites[0].id){
-              alert("sorry this character is already in your list favourite please choice other")
+              Swal.fire({
+                title: 'you have already this character in favorites!',
+                icon: 'error',
+                timer: 2000,
+                showConfirmButton: false
+              })
             }else{
               save = store
               save.push(favorites[0])
               console.log(save)
               localStorage.setItem("characters", JSON.stringify(save))
               let num = JSON.parse(localStorage.getItem("characters"))
-              alert(`Great you have a ${num.length} in your favourite list`)
+              Swal.fire({
+                title: `Great you have a ${num.length} characters in your favourite list`,
+                icon: 'success',
+                timer: 3000,
+                showConfirmButton: false
+              })
             }
           }
         }

@@ -163,7 +163,7 @@
 #prevButton, #nextButton{
   margin: 1em;
 }
-#buttonSearch button:hover,#prevButton:hover, #nextButton:hover{
+#buttonSearch button:hover,#prevButton:hover, #nextButton:hover, #lastPage:hover, #page10:hover, #page20:hover, #page30:hover{
   background-color: rgba(0, 60, 29, 0.2);
 }
 footer{

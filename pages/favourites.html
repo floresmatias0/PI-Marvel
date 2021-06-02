@@ -21,6 +21,8 @@
     </main>
     <footer>by matias flores</footer>
   </body>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="sweetalert2.all.min.js"></script>
   <script>
   const textStore = document.querySelector(".textStore")
   const cards = document.querySelector(".cards");
@@ -43,10 +45,31 @@
         let newStore = store.filter(point => point.id !== value)
         save = newStore
         localStorage.setItem("characters", JSON.stringify(save))
-        alert("erase character")
-        location.reload()
+          Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire({
+                title:'Deleted!',
+                showConfirmButton: false
+              })
+            }
+             setTimeout(()=>{
+               location.reload()
+             },1000)
+          })
+
       }else{
-        alert("error 404")
+        Swal.fire({
+          text: 'Error 404',
+          icon: 'error'
+        })
       }
     }
 
